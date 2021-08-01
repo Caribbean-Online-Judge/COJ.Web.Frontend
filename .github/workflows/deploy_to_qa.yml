@@ -1,0 +1,25 @@
+name: Deply to Heroku
+
+on:
+  push:
+    branches:
+      - development
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        name: Deploying to Heroku
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+          buildpack: "https://github.com/mars/heroku-nextjs"
+          branch: "development"
+        env:
+          NODE_ENV: production
