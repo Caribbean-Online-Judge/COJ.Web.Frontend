@@ -3,7 +3,7 @@ name: Deply to Heroku
 on:
   push:
     branches:
-      - development
+      - dev
 
 
 jobs:
@@ -20,6 +20,6 @@ jobs:
           heroku_email: ${{ secrets.HEROKU_EMAIL }}
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
           buildpack: "https://github.com/mars/heroku-nextjs"
-          branch: "development"
+          branch: "dev"
         env:
           NODE_ENV: production
