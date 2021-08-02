@@ -1,6 +1,7 @@
 COJ - Caribbean Online Judge (Web Frontend App)
 ==================================================
 <div align="center">
+  <img alt="GitHub" src="https://img.shields.io/github/license/Caribbean-Online-Judge/Web-Frontend?label=License">
   <img alt="GitHub Workflow Status (branch)" src="https://img.shields.io/github/workflow/status/Caribbean-Online-Judge/Web-Frontend/Deply%20to%20Heroku/dev?label=Development%20Deploy">
 </div>
 
