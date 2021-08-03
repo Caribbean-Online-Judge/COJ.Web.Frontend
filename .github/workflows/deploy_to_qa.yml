@@ -1,4 +1,4 @@
-name: Deply to Heroku
+name: Deploy to Heroku
 
 on:
   push:
