@@ -1,7 +1,14 @@
 module.exports = {
-  reactStrictMode: true,
   i18n: {
-    locales: ['es', 'en'],
-    default: 'es'
-  }
+    locales: ["en-US", "es"],
+
+    defaultLocale: "es",
+    domains: [
+      {
+        domain: "herokuapp.com",
+        defaultLocale: "es",
+        locales: ["es", "en-US"],
+      },
+    ],
+  },
 }
