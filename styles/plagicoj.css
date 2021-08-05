@@ -1,17 +1,17 @@
 
 a.pcojresultlink{
     color: #FFFFFF;
-    font: bold;
+    font-weight: bold;
 }
 
 a.pcojresultlink:visited{
     color: #FFFFFF;
-    font: bold;
+    font-weight: bold;
 
 }
 
 a.pcojresultlink:link{
-    color: #FFFFFF;            
+    color: #FFFFFF;
 }
 
 a.pcojresultlink:hover{
@@ -29,7 +29,7 @@ a.pcojresultlink:hover{
 .pcojsubinformsource{
     float: left;
 }
-.pcojsubinformdestination{ 
+.pcojsubinformdestination{
     float: right;
 }
 
@@ -50,31 +50,31 @@ a.pcojresultlink:hover{
 .plagMatrix #sup{
 }
 
-.plagMatrix #inf{   
+.plagMatrix #inf{
     margin-bottom: 5px;
     clear: both;
 }
 
 .plagMatrix #left{
-    width: 25px;    
+    width: 25px;
     height: 296px;
     vertical-align: middle;
-    float: left;    
+    float: left;
     padding-right: 9px;
 }
 
 
-.plagMatrix #matrix{  
+.plagMatrix #matrix{
     float: left;
-    width: 90%;    
+    width: 90%;
     height: 315px;
 }
 
-.plagMatrix #right{    
-    width: 25px;    
+.plagMatrix #right{
+    width: 25px;
     height: 296px;
     vertical-align: middle;
-    float: left;    
+    float: left;
     padding-left: 9px;
 
 }
@@ -82,7 +82,7 @@ a.pcojresultlink:hover{
 
 .plagMatrix{
     /*visibility: hidden;    */
-    margin-bottom: 25px;    
+    margin-bottom: 25px;
 }
 
 .plagMatrix a{
@@ -93,11 +93,11 @@ a.pcojresultlink:hover{
     color: #FFFE00;
 }
 
-#legend{    
+#legend{
     clear: both;
 }
 
-a.btnPlagicoj{    
+a.btnPlagicoj{
     background: none repeat scroll 0 0 #4C83C3;
     border-radius: 5px 5px 5px 5px;
     color: #FFFFFF;
@@ -105,8 +105,8 @@ a.btnPlagicoj{
     text-decoration: none;
 }
 
-a.btnPlagicoj:hover{    
-    background: none repeat scroll 0 0 rgba(75, 130, 196, 0.5); 
+a.btnPlagicoj:hover{
+    background: none repeat scroll 0 0 rgba(75, 130, 196, 0.5);
     color: #FFFE00;
 }
 
@@ -115,7 +115,7 @@ img.btnPlagicoj{
     border: none;
 }
 
-div.pcojdiffdiv{    
+div.pcojdiffdiv{
     width: 100%;
 }
 
@@ -123,7 +123,7 @@ table.pcojdifftable {
     border-collapse:collapse;
     border:1px solid darkgray
 }
-table.pcojdifftable tbody { 
+table.pcojdifftable tbody {
     font-family:Courier, monospace
 }
 table.pcojdifftable tbody th {
@@ -183,7 +183,7 @@ table.plagicoj td{
 }
 
 table.plagicoj td input{
-    width: 46%;    
+    width: 46%;
 }
 .navigating td *{
     cursor: pointer;
@@ -194,11 +194,11 @@ table.plagicoj td input{
     height: 4%;
 }
 .navvertical td,tr{
-    border:0px;        
+    border:0px;
 }
 
 .navvertical tr{
-    border:0px;    
+    border:0px;
 }
 .navvertical{
     border: 1px solid #C0C0C0;
@@ -238,7 +238,7 @@ table.plagicoj td input{
 
 .rigthdiv{
     width: 40%;
-    float: left;    
+    float: left;
 }
 
 .rigthdiv > *{
@@ -258,17 +258,17 @@ table.plagicoj td input{
     margin-top: 20px;
 }
 
-.flag1{        
-    background: url("/images/plagicoj/java.png") no-repeat scroll #F7EA75;
+.flag1{
+    background: url("/public/images/plagicoj/java.png") no-repeat scroll #F7EA75;
 
 }
 
 .flag2{
-    background: url("/images/plagicoj/profile.jpeg") no-repeat scroll #F7EA75;
+    background: url("/public/images/plagicoj/profile.jpeg") no-repeat scroll #F7EA75;
 }
 
 .flag3{
-    background: url("/images/plagicoj/submit.png") no-repeat scroll #F7EA75;
+    background: url("/public/images/plagicoj/submit.png") no-repeat scroll #F7EA75;
 }
 
 

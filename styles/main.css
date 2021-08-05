@@ -83,14 +83,12 @@ p.ex, div.ex {
 }
 
 ul li.iconmail {
-    background: url('../images/inbox.png');
     background-repeat: no-repeat;
     padding-left: 20px;
     height: 16px;
 }
 
 ul li.sent {
-    background: url('../images/sent.png');
     background-repeat: no-repeat;
     margin-left: 14px;
     padding-left: 20px;

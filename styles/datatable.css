@@ -45,15 +45,15 @@ thead th {
 }
 
 th.sortable a {
-    background-image: url("../images/arrow_off.png");
+    background-image: url("../public/images/arrow_off.png");
 }
 
 th.order1 a {
-    background-image: url("../images/arrow_down.png");
+    background-image: url("../public/images/arrow_down.png");
 }
 
 th.order2 a {
-    background-image: url("../images/arrow_up.png");
+    background-image: url("../public/images/arrow_up.png");
 }
 
 th.sorted a, th.sortable a {
@@ -354,7 +354,7 @@ img.school, img.country {
 }
 
 .subPEN {
-    color: #9999FFe;
+    color: #999FFe;
 }
 
 .PEN {

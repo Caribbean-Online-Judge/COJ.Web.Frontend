@@ -1,22 +1,114 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from "react"
+import Header from "../components/Header"
+import Content from "../components/Content"
+import Footer from "../components/Footer"
+import Sidebar from "../components/Sidebar"
 
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
-      <div className={styles.container}>
-          <div className={styles.background}/>
-          <Head>
-              <title>COJ</title>
-              <meta name="description" content="Caribbean Online Judge" />
-              <link rel="icon" href="/favicon.ico" />
-          </Head>
+    <>
+      <div id="main">
+        <div className="sheet">
+          <div className="sheet-body">
+            <Header />
 
-          <main className={styles.main}>
-              <h1 className={styles.title}>
-                  Next this will be the <span>New</span>{" "}<span>COJ</span>
-              </h1>
+            <div className="content-layout">
+              <div className="content-layout-row">
+                <Sidebar />
 
-          </main>
+                <div className="layout-cell content">
+                  <div className="post">
+                    <div className="post-body">
+                      <div className="post-inner article">
+                        <div className="pull-right">
+                          <table className="contestlanguages">
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <b>fieldhdr.status :</b>
+                                </td>
+                                <td>
+                                  <span className="label label-success">
+                                    fieldhdr.running
+                                  </span>
+                                  <span className="label label-danger">
+                                    fieldhdr.coming
+                                  </span>
+                                  <span className="label label-default">
+                                    fieldhdr.past
+                                  </span>
+                                </td>
+                                <td>
+                                  <b>fieldhdr.elapsed :</b>
+                                </td>
+                                <td>
+                                  <div
+                                    className="countup"
+                                    data-start-date="${contest.initdate.time}"
+                                    data-end-date="${contest.enddate.time}"
+                                  />
+                                </td>
+                                <td>
+                                  <b>fieldhdr.remaining :</b>
+                                </td>
+                                <td>
+                                  <div
+                                    className="countdown"
+                                    data-date="${contest.enddate.time}"
+                                  />
+                                </td>
+
+                                <td>
+                                  <b>fieldhdr.start :</b>
+                                </td>
+                                <td>
+                                  <b>fieldhdr.end :</b>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colSpan={6} style={{ textAlign: "center" }}>
+                                  <span className="label label-danger">
+                                    <i className="fa fa-warning" />
+                                    &nbsp; text.deadtime
+                                  </span>
+
+                                  <span className="label label-primary">
+                                    <i className="fa fa-info-circle" />
+                                    &nbsp; text.frozentime
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <br />
+                        <div className="clearfix" />
+                        <a id="header" />
+                        <Content />
+                        <div className="pull-right">
+                          <i className="fa fa-toggle-up fa-lg" />
+                        </div>
+                        <div className="cleared" />
+                      </div>
+                      <div className="cleared" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="cleared" />
+            <div className="footer">
+              <div className="footer-inner">
+                <div className="footer-text">
+                  <Footer />
+                </div>
+              </div>
+            </div>
+            <div className="cleared" />
+          </div>
+        </div>
+        <div className="cleared" />
       </div>
+    </>
   )
 }
