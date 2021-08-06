@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx",
-    "format": "yarn lint & prettier --write \"pages/**/*.tsx\" & prettier --write \"components/**/*.tsx\""
+    "format": "prettier --write \"pages/**/*.tsx\" & prettier --write \"components/**/*.tsx\"",
+    "postinstall": "husky install",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "clsx": "^1.1.1",
-    "husky": "^7.0.1",
     "next": "11.0.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
@@ -28,7 +29,8 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "prettier": "^2.3.2",
-    "typescript": "4.3.5"
+    "typescript": "4.3.5",
+    "husky": "^7.0.0"
   },
   "husky": {
     "hooks": {

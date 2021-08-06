@@ -5,12 +5,10 @@ export default function Content(): JSX.Element {
     <div className="post">
       <div className="post-body">
         <div className="post-inner article">
-          <h2 className="postheader">page.welcome.title</h2>
+          <h2 className="postheader" >page.welcome.title</h2>
           <div className="postcontent" />
           <div className="cleared" />
         </div>
-
-
 
         <div className="cleared" />
       </div>
