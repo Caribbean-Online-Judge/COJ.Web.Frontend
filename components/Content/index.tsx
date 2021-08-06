@@ -9,7 +9,6 @@ export default function Content(): JSX.Element {
           <div className="postcontent" />
           <div className="cleared" />
         </div>
-
         <div className="cleared" />
       </div>
     </div>
