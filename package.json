@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx",
-    "format": "prettier --write **/*.tsx & prettier --write **/*.ts",
+    "format": "prettier --write **/*.{tsx,ts}",
     "postinstall": "husky install",
     "prepare": "husky install"
   },
