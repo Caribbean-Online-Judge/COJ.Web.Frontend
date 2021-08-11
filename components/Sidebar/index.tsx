@@ -1,5 +1,20 @@
 import React from "react"
 import PublicSidebar from "../PublicSidebar"
+import { Icon } from "@material-ui/core"
+import {
+  AccessTime as AccessTimeIcon,
+  ListAlt as ListAltIcon,
+  Gavel as GavelIcon,
+  TrendingDown as TrendingDownIcon,
+  People as PeopleIcon,
+  Apartment as ApartmentIcon,
+  Public as PublicIcon,
+  SupervisorAccount as SupervisorAccountIcon,
+  Equalizer as EqualizerIcon,
+  ArrowForward as ArrowForwardIcon,
+  PlayArrow as PlayArrowIcon,
+  ArrowBack as ArrowBackIcon,
+} from "@material-ui/icons"
 
 export default function Sidebar(): JSX.Element {
   return (
@@ -8,47 +23,66 @@ export default function Sidebar(): JSX.Element {
       <div className="block">
         <div className="panel panel-primary block-body">
           <div className="panel-heading">
-            <i className="fa fa-clock-o fa-lg" />
-            &nbsp; block.24h
+            <Icon>
+              <AccessTimeIcon />
+            </Icon>
+            &nbsp; Archivo de 24 horas
           </div>
           <div className="panel-body blockcontent-body">
             <div>
               <ul className="list-unstyled">
                 <li>
-                  <i className="fa fa-list">link.problems</i>
+                  <Icon>
+                    <ListAltIcon />
+                  </Icon>
+                  &nbsp; Problems
                 </li>
                 <li>
-                  <i className="fa fa-legal" />
-                  &nbsp; link.judgments
+                  <Icon>
+                    <GavelIcon />
+                  </Icon>
+                  &nbsp; Judgments
                 </li>
                 <li>
-                  <i className="fa fa-sort-numeric-asc" />
-                  &nbsp;link.standings
+                  <Icon>
+                    <TrendingDownIcon />
+                  </Icon>
+                  &nbsp;Standings
                   <ul>
                     <li className="item-sidebar-selected">
-                      <i className="fa fa-users" />
-                      &nbsp; link.users
+                      <Icon>
+                        <PeopleIcon />
+                      </Icon>
+                      &nbsp; Users
                     </li>
 
                     <li className="item-sidebar-selected">
-                      <i className="fa fa-institution" />
-                      &nbsp; link.institutions
+                      <Icon>
+                        <ApartmentIcon />
+                      </Icon>
+                      &nbsp; Institutions
                     </li>
 
                     <li className="item-sidebar-selected">
-                      <i className="fa fa-globe" />
-                      &nbsp; link.countries
+                      <Icon>
+                        <PublicIcon />
+                      </Icon>
+                      &nbsp; Countries
                     </li>
                   </ul>
                 </li>
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-refresh" />
-                  &nbsp;link.cusers
+                  <Icon>
+                    <SupervisorAccountIcon />
+                  </Icon>
+                  &nbsp; Compare users
                 </li>
 
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-bar-chart" />
-                  &nbsp;link.statistics
+                  <Icon>
+                    <EqualizerIcon />
+                  </Icon>
+                  &nbsp; Statistics
                 </li>
               </ul>
             </div>
@@ -61,33 +95,43 @@ export default function Sidebar(): JSX.Element {
         <div className="panel panel-primary block-body">
           <div className="panel-heading">
             <i className="fa fa-trophy fa-lg" />
-            &nbsp; block.rcontests
+            &nbsp; Real contests
           </div>
           <div className="panel-body blockcontent-body">
             <div>
               <ul className="list-unstyled">
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-arrow-circle-right" />
-                  &nbsp; link.coming
+                  <Icon>
+                    <ArrowForwardIcon />
+                  </Icon>
+                  &nbsp; Coming
                   <span className="label label-danger" />
                 </li>
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-play" />
-                  &nbsp;link.running
+                  <Icon>
+                    <PlayArrowIcon />
+                  </Icon>
+                  &nbsp;Running
                   <span className="label label-success" />
                 </li>
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-arrow-circle-left" />
-                  &nbsp;link.previous
+                  <Icon>
+                    <ArrowBackIcon />
+                  </Icon>
+                  &nbsp;Previous
                   <span className="label label-default" />
                 </li>
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-sort-numeric-asc" />
-                  &nbsp;link.standings
+                  <Icon>
+                    <TrendingDownIcon />
+                  </Icon>
+                  &nbsp;Standings
                 </li>
                 <li className="item-sidebar-selected">
-                  <i className="fa fa-bar-chart" />
-                  &nbsp;link.statistics
+                  <Icon>
+                    <EqualizerIcon />
+                  </Icon>
+                  &nbsp;Statistics
                 </li>
               </ul>
             </div>

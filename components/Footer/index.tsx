@@ -3,11 +3,15 @@ import React from "react"
 export default function Footer(): JSX.Element {
   return (
     <p>
-      text.footer.1
+      <a href="http://www.uci.cu">Universidad de las Ciencias Informáticas (UCI)</a>
       <br />
-      text.footer.2
+      2010-2019 | COJ v2.0 | All rights reserved
       <br />
-      text.footer.3
+      In case of any question or comment, please{" "}
+      <a href="/general/contact.xhtml">
+        <u>contact us</u>
+      </a>
+      .
     </p>
   )
 }

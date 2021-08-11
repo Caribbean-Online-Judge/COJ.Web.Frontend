@@ -25,7 +25,7 @@ export default function Home(): JSX.Element {
                             <tbody>
                               <tr>
                                 <td>
-                                  <b>fieldhdr.status :</b>
+                                  <b>Status:</b>
                                 </td>
                                 <td>
                                   <span className="label label-success">
