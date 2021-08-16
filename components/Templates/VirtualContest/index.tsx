@@ -4,20 +4,20 @@ import SideBar from "../../Sidebar"
 import Footer from "../../Footer"
 
 function VirtualContest({ children }: any): JSX.Element {
-   return (
-      <>
-         <div id="main">
-            <div className="sheet">
-               <div className="sheet-body">
-                  <Header />
-                  <div className="content-layout">
-                     <div className="content-layout-row">
-                        <SideBar />
-                        <div className="layout-cell content">
-                           <div className="post">
-                              <div className="post-body">
-                                 <div className="post-inner article">
-                                    {/* <c:if test="${contest != null and contest.initdate != null and (contest.past or contest.running or contest.coming)}">
+  return (
+    <>
+      <div id="main">
+        <div className="sheet">
+          <div className="sheet-body">
+            <Header />
+            <div className="content-layout">
+              <div className="content-layout-row">
+                <SideBar />
+                <div className="layout-cell content">
+                  <div className="post">
+                    <div className="post-body">
+                      <div className="post-inner article">
+                        {/* <c:if test="${contest != null and contest.initdate != null and (contest.past or contest.running or contest.coming)}">
                           <div class="pull-right">
                             <table class="contestlanguages" style="align: right">
                               <tbody>
@@ -84,41 +84,41 @@ function VirtualContest({ children }: any): JSX.Element {
                           </div>
                           <br />
                         </c:if> */}
-                                    <div className="clearfix"></div>
-                                    <a id="header"></a>
-                                    {children}
-                                    <div className="pull-right">
-                                       <a
-                                          href="#header"
-                                          title='spring:message code=" titval.top"'
-                                       >
-                                          <i className="fa fa-toggle-up fa-lg"></i>
-                                       </a>
-                                    </div>
-                                    <div className="cleared"></div>
-                                 </div>
+                        <div className="clearfix"></div>
+                        <a id="header"></a>
+                        {children}
+                        <div className="pull-right">
+                          <a
+                            href="#header"
+                            title='spring:message code=" titval.top"'
+                          >
+                            <i className="fa fa-toggle-up fa-lg"></i>
+                          </a>
+                        </div>
+                        <div className="cleared"></div>
+                      </div>
 
-                                 <div className="cleared"></div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+                      <div className="cleared"></div>
+                    </div>
                   </div>
-                  <div className="cleared"></div>
-                  <div className="footer">
-                     <div className="footer-inner">
-                        <div className="footer-text">
-                           <Footer />
-                        </div>
-                     </div>
-                  </div>
-                  <div className="cleared"></div>
-               </div>
+                </div>
+              </div>
             </div>
             <div className="cleared"></div>
-         </div>
-      </>
-   )
+            <div className="footer">
+              <div className="footer-inner">
+                <div className="footer-text">
+                  <Footer />
+                </div>
+              </div>
+            </div>
+            <div className="cleared"></div>
+          </div>
+        </div>
+        <div className="cleared"></div>
+      </div>
+    </>
+  )
 }
 
 export default VirtualContest
