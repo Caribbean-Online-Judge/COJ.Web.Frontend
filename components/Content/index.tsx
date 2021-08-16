@@ -1,8 +1,8 @@
 import React from "react"
 
 export default function Content(): JSX.Element {
-  return (
-    <div className="post">
+   return (
+      <div className="post">
          <div className="post-body">
             <div className="post-inner article">
                <h2 className="postheader">page.welcome.title</h2>
