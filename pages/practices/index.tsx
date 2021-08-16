@@ -3,7 +3,7 @@ import VirtualContest from "../../components/Templates/VirtualContest"
 
 function Practices(): JSX.Element {
   return (
-    <VirtualContest>
+    <>
       <h2 className="postheader">spring:message code="pagehdr.vcoverview"</h2>
       <div className="postcontent">
         spring:message code="text.vcoverview.1"
@@ -23,7 +23,7 @@ function Practices(): JSX.Element {
           <li>spring:message code="text.vcoverview.9" </li>
         </ol>
       </div>
-    </VirtualContest>
+    </>
   )
 }
 
