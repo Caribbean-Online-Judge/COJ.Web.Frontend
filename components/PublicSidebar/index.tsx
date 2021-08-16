@@ -1,10 +1,6 @@
 import React from "react"
-import {
-   Person as PersonIcon,
-   Lock as LockIcon,
-   MoreHoriz as MoreHorizIcon,
-} from "@material-ui/icons"
-import { Button, Card, Icon } from "@material-ui/core"
+import { Person as PersonIcon, MoreHoriz as MoreHorizIcon } from "@material-ui/icons"
+import { Button, Card } from "@material-ui/core"
 
 export default function Index(): JSX.Element {
    return (

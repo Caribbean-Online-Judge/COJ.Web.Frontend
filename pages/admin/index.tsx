@@ -14,12 +14,7 @@ export default function Admin(): JSX.Element {
                      <div className="panel-heading">
                         Users
                         <div className="badge pull-right">
-                           <a data-toggle="collapse" href="#gUsers">
-                              <i
-                                 data-toggle="tooltip"
-                                 className="fa fa-chevron-up"
-                              />
-                           </a>
+                           <i data-toggle="tooltip" className="fa fa-chevron-up" />
                         </div>
                      </div>
                      <div id="gUsers" className="panel-body collapse in">
@@ -97,11 +92,9 @@ export default function Admin(): JSX.Element {
                   <div className="panel-heading">
                      Problems
                      <div className="badge pull-right">
-                        <a data-toggle="collapse" href="#gProblems">
-                           <Icon>
-                              <ExpandLessIcon />
-                           </Icon>
-                        </a>
+                        <Icon>
+                           <ExpandLessIcon />
+                        </Icon>
                      </div>
                   </div>
                   <div id="gProblems" className="panel-body collapse in">
@@ -135,9 +128,7 @@ export default function Admin(): JSX.Element {
                   <div className="panel-heading">
                      Contests
                      <div className="badge pull-right">
-                        <a data-toggle="collapse" href="#gContests">
-                           <i data-toggle="tooltip" className="fa fa-chevron-up" />
-                        </a>
+                        <i data-toggle="tooltip" className="fa fa-chevron-up" />
                      </div>
                   </div>
                   <div id="gContests" className="panel-body collapse in">
@@ -161,9 +152,7 @@ export default function Admin(): JSX.Element {
                   <div className="panel-heading">
                      Submits
                      <div className="badge pull-right">
-                        <a data-toggle="collapse" href="#gSubmits">
-                           <i data-toggle="tooltip" className="fa fa-chevron-up" />
-                        </a>
+                        <i data-toggle="tooltip" className="fa fa-chevron-up" />
                      </div>
                   </div>
                   <div id="gSubmits" className="panel-body collapse in">
@@ -181,9 +170,7 @@ export default function Admin(): JSX.Element {
                   <div className="panel-heading">
                      Miscellaneous
                      <div className="badge pull-right">
-                        <a data-toggle="collapse" href="#gMisc">
-                           <i data-toggle="tooltip" className="fa fa-chevron-up" />
-                        </a>
+                        <i data-toggle="tooltip" className="fa fa-chevron-up" />
                      </div>
                   </div>
                   <div id="gMisc" className="panel-body collapse in">
@@ -244,9 +231,7 @@ export default function Admin(): JSX.Element {
                   <div className="panel-heading">
                      Configuration
                      <div className="badge pull-right">
-                        <a data-toggle="collapse" href="#gConfiguration">
-                           <i data-toggle="tooltip" className="fa fa-chevron-up" />
-                        </a>
+                        <i data-toggle="tooltip" className="fa fa-chevron-up" />
                      </div>
                   </div>
                   <div id="gConfiguration" className="panel-body collapse in">
@@ -275,9 +260,7 @@ export default function Admin(): JSX.Element {
                   <div className="panel-heading">
                      COJ Board
                      <div className="badge pull-right">
-                        <a data-toggle="collapse" href="#gWebBoard">
-                           <i data-toggle="tooltip" className="fa fa-chevron-up" />
-                        </a>
+                        <i data-toggle="tooltip" className="fa fa-chevron-up" />
                      </div>
                   </div>
                   <div id="gWebBoard" className="panel-body collapse in">

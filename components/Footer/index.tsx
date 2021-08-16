@@ -1,4 +1,5 @@
 import React from "react"
+import Link from "next/link"
 
 export default function Footer(): JSX.Element {
    return (
@@ -10,9 +11,9 @@ export default function Footer(): JSX.Element {
          2010-2019 | COJ v2.0 | All rights reserved
          <br />
          In case of any question or comment, please{" "}
-         <a href="/general/contact.xhtml">
+         <Link href="/">
             <u>contact us</u>
-         </a>
+         </Link>
          .
       </p>
    )

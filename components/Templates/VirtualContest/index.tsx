@@ -3,7 +3,7 @@ import Header from "../../Header"
 import SideBar from "../../Sidebar"
 import Footer from "../../Footer"
 
-function VirtualContest({ children }: any): JSX.Element {
+function VirtualContest(children: JSX.Element): JSX.Element {
    return (
       <>
          <div id="main">
@@ -84,27 +84,22 @@ function VirtualContest({ children }: any): JSX.Element {
                           </div>
                           <br />
                         </c:if> */}
-                                    <div className="clearfix"></div>
-                                    <a id="header"></a>
+                                    <div className="clearfix" />
+                                    <a id="header" />
                                     {children}
                                     <div className="pull-right">
-                                       <a
-                                          href="#header"
-                                          title='spring:message code=" titval.top"'
-                                       >
-                                          <i className="fa fa-toggle-up fa-lg"></i>
-                                       </a>
+                                       <i className="fa fa-toggle-up fa-lg" />
                                     </div>
-                                    <div className="cleared"></div>
+                                    <div className="cleared" />
                                  </div>
 
-                                 <div className="cleared"></div>
+                                 <div className="cleared" />
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div className="cleared"></div>
+                  <div className="cleared" />
                   <div className="footer">
                      <div className="footer-inner">
                         <div className="footer-text">
@@ -112,10 +107,10 @@ function VirtualContest({ children }: any): JSX.Element {
                         </div>
                      </div>
                   </div>
-                  <div className="cleared"></div>
+                  <div className="cleared" />
                </div>
             </div>
-            <div className="cleared"></div>
+            <div className="cleared" />
          </div>
       </>
    )
