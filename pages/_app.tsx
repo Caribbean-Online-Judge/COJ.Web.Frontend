@@ -26,7 +26,7 @@ import Header from "../components/Header"
 import SideBar from "../components/Sidebar"
 import Footer from "../components/Footer"
 
-export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
    return (
       <>
          <div id="main">
@@ -40,22 +40,27 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                            <div className="post">
                               <div className="post-body">
                                  <div className="post-inner article">
-                                    <div className="clearfix" />
-                                    <a id="header" />
+                                    <div className="clearfix"></div>
+                                    <a id="header"></a>
                                     <Component {...pageProps} />
                                     <div className="pull-right">
-                                       <i className="fa fa-toggle-up fa-lg" />
+                                       <a
+                                          href="#header"
+                                          title='spring:message code=" titval.top"'
+                                       >
+                                          <i className="fa fa-toggle-up fa-lg"></i>
+                                       </a>
                                     </div>
-                                    <div className="cleared" />
+                                    <div className="cleared"></div>
                                  </div>
 
-                                 <div className="cleared" />
+                                 <div className="cleared"></div>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <div className="cleared" />
+                  <div className="cleared"></div>
                   <div className="footer">
                      <div className="footer-inner">
                         <div className="footer-text">
@@ -63,10 +68,10 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
                         </div>
                      </div>
                   </div>
-                  <div className="cleared" />
+                  <div className="cleared"></div>
                </div>
             </div>
-            <div className="cleared" />
+            <div className="cleared"></div>
          </div>
       </>
    )
