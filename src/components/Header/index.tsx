@@ -1,25 +1,104 @@
-import React from "react"
+import React, { useState } from "react"
+import {
+   Toolbar,
+   IconButton,
+   Typography,
+   Menu,
+   MenuItem,
+   Tooltip,
+} from "@mui/material"
+import {
+   Menu as MenuIcon,
+   AccountCircle as AccountCircleIcon,
+   Login as LoginIcon,
+} from "@mui/icons-material"
+import { openDrawer } from "../../api/redux"
+import { useDispatch } from "react-redux"
 import Link from "next/link"
-
+import { GradientAppBar } from "./styles"
 export default function Header(): JSX.Element {
+   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+   const isMenuOpen = Boolean(anchorEl)
+   const dispatch = useDispatch()
+   const isAuthenticated = false
+
+   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+      setAnchorEl(event.currentTarget)
+   }
+   const handleMenuClose = () => {
+      setAnchorEl(null)
+   }
+
+   const renderMenu = (
+      <Menu
+         anchorEl={anchorEl}
+         anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+         }}
+         id={"primary-search-account-menu"}
+         keepMounted
+         transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+         }}
+         open={isMenuOpen}
+         onClose={handleMenuClose}
+      >
+         <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+         <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      </Menu>
+   )
+
    return (
-      <div className={"row header"}>
-         <div className={"headercss"}>
-            <Link href="/">
-               <>
-                  <div className="headerlf">
-                     <div className="headerleft">
-                        <div className="logoc">C</div>
-                        <div className="logoo">O</div>
-                        <div className="logoj">J</div>
-                     </div>
-                  </div>
-                  <div className="headerrigth">
-                     <span className="bannername">Caribbean Online Judge</span>
-                  </div>
-               </>
-            </Link>
-         </div>
-      </div>
+      <GradientAppBar position={"static"}>
+         <Toolbar>
+            <IconButton
+               size="large"
+               edge="start"
+               color="inherit"
+               aria-label="open drawer"
+               sx={{ mr: 2 }}
+               onClick={() => dispatch(openDrawer())}
+            >
+               <MenuIcon />
+            </IconButton>
+            <Typography
+               variant="h4"
+               sx={{ flexGrow: 1 }}
+               //color={'primary'}
+               fontWeight={700}
+            >
+               Caribbean Online Judge
+            </Typography>
+            {isAuthenticated ? (
+               <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-haspopup="true"
+                  color="inherit"
+                  onClick={handleProfileMenuOpen}
+               >
+                  <AccountCircleIcon />
+               </IconButton>
+            ) : (
+               <Link href="/login">
+                  <Tooltip title={"Login"} arrow>
+                     <IconButton
+                        size="large"
+                        edge="end"
+                        aria-label="account of current user"
+                        aria-haspopup="true"
+                        color="inherit"
+                     >
+                        <LoginIcon />
+                     </IconButton>
+                  </Tooltip>
+               </Link>
+            )}
+         </Toolbar>
+         {renderMenu}
+      </GradientAppBar>
    )
 }

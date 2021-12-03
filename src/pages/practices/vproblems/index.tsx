@@ -6,7 +6,7 @@ function VProblems(): JSX.Element {
          <h2 className="postheader">
             {/* <a class="linkheader" href="<c:url value="vcontestview.xhtml?cid=${contest.cid}"/>">${contest.name}</a> */}
             <br />
-            spring:message code="pagehdr.problems"
+            spring:message code=pagehdr.problems
          </h2>
          <div className="postcontent">
             <div
