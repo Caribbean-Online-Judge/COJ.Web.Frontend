@@ -1,5 +1,5 @@
 import store from "./store"
-import { closeDrawer, openDrawer } from "./slices/uiSlice"
+import { toggleIsDrawerOpen } from "./slices/uiSlice"
 import { setIsAuthenticated } from "./slices/userSlice"
 import { TypedUseSelectorHook, useSelector } from "react-redux"
 
@@ -9,4 +9,4 @@ export type AppDispatch = typeof store.dispatch
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export { store, closeDrawer, openDrawer, setIsAuthenticated }
+export { store, toggleIsDrawerOpen, setIsAuthenticated }

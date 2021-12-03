@@ -1,5 +1,4 @@
-import { styled } from "@mui/system"
-import { AppBar } from "@mui/material"
+import { AppBar, styled } from "@mui/material"
 
 export const GradientAppBar = styled(AppBar)(({ theme }) => ({
    background:
@@ -8,4 +7,5 @@ export const GradientAppBar = styled(AppBar)(({ theme }) => ({
       "," +
       theme.palette.primary.main +
       ")",
+   zIndex: theme.zIndex.drawer,
 }))

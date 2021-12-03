@@ -11,8 +11,9 @@ import {
    Menu as MenuIcon,
    AccountCircle as AccountCircleIcon,
    Login as LoginIcon,
+   Close as CloseIcon,
 } from "@mui/icons-material"
-import { openDrawer, useAppSelector } from "../../api/redux"
+import { toggleIsDrawerOpen, useAppSelector } from "../../api/redux"
 import { useDispatch } from "react-redux"
 import Link from "next/link"
 import { GradientAppBar } from "./styles"
@@ -21,6 +22,7 @@ export default function Header(): JSX.Element {
    const isMenuOpen = Boolean(anchorEl)
    const dispatch = useDispatch()
    const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated)
+   const isDrawerOpen = useAppSelector((state) => state.ui.isDeawerOpen)
 
    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorEl(event.currentTarget)
@@ -51,7 +53,7 @@ export default function Header(): JSX.Element {
    )
 
    return (
-      <GradientAppBar position={"static"}>
+      <GradientAppBar position={"relative"}>
          <Toolbar>
             <IconButton
                size="large"
@@ -59,9 +61,9 @@ export default function Header(): JSX.Element {
                color="inherit"
                aria-label="open drawer"
                sx={{ mr: 2 }}
-               onClick={() => dispatch(openDrawer())}
+               onClick={() => dispatch(toggleIsDrawerOpen())}
             >
-               <MenuIcon />
+               {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
             </IconButton>
             <Typography
                variant="h4"

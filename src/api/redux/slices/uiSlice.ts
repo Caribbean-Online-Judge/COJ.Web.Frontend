@@ -12,14 +12,11 @@ const UiSlice = createSlice({
    initialState,
    name: "UiSlice",
    reducers: {
-      closeDrawer: (state) => {
-         state.isDeawerOpen = false
-      },
-      openDrawer: (state) => {
-         state.isDeawerOpen = true
+      toggleIsDrawerOpen: (state) => {
+         state.isDeawerOpen = !state.isDeawerOpen
       },
    },
 })
 
-export const { closeDrawer, openDrawer } = UiSlice.actions
+export const { toggleIsDrawerOpen } = UiSlice.actions
 export default UiSlice.reducer
