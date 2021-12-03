@@ -12,7 +12,7 @@ import {
    AccountCircle as AccountCircleIcon,
    Login as LoginIcon,
 } from "@mui/icons-material"
-import { openDrawer } from "../../api/redux"
+import { openDrawer, useAppSelector } from "../../api/redux"
 import { useDispatch } from "react-redux"
 import Link from "next/link"
 import { GradientAppBar } from "./styles"
@@ -20,7 +20,7 @@ export default function Header(): JSX.Element {
    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
    const isMenuOpen = Boolean(anchorEl)
    const dispatch = useDispatch()
-   const isAuthenticated = false
+   const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated)
 
    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorEl(event.currentTarget)

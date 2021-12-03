@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit"
 import thunk from "redux-thunk"
-import UiSlice from "./reducers/uiReducer"
+import uiSlice from "./slices/uiSlice"
+import userSlice from "./slices/userSlice"
 
 const store = configureStore({
    reducer: {
-      ui: UiSlice,
+      ui: uiSlice,
+      user: userSlice,
    },
    middleware: [thunk],
    devTools: process.env.NODE_ENV === "development",

@@ -10,9 +10,19 @@ import {
 import Lottie from "react-lottie-player"
 import coderBoyAnim from "../../assets/lottie/coder-boy-anim.json"
 import { Button } from "@mui/material"
-import Link from "next/link"
+import { useRouter } from "next/router"
+import { useDispatch } from "react-redux"
+import { setIsAuthenticated } from "../../api/redux"
 
 export default function Login(): JSX.Element {
+   const router = useRouter()
+   const dispatch = useDispatch()
+
+   const handleLogin = () => {
+      dispatch(setIsAuthenticated())
+      router.replace("/app")
+   }
+
    return (
       <RootContainer>
          <SignInCard>
@@ -40,11 +50,9 @@ export default function Login(): JSX.Element {
                   type={"password"}
                   fullWidth
                />
-               <Link href="/app">
-                  <Button variant={"contained"} fullWidth>
-                     LogIn
-                  </Button>
-               </Link>
+               <Button variant={"contained"} fullWidth onClick={handleLogin}>
+                  LogIn
+               </Button>
             </BoxContainer>
             <LottieBoxContainer>
                <Lottie

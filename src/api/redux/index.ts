@@ -1,5 +1,6 @@
 import store from "./store"
-import { closeDrawer, openDrawer } from "./reducers/uiReducer"
+import { closeDrawer, openDrawer } from "./slices/uiSlice"
+import { setIsAuthenticated } from "./slices/userSlice"
 import { TypedUseSelectorHook, useSelector } from "react-redux"
 
 // Infer the `RootState` and `AppDispatch` types from the redux itself
@@ -8,4 +9,4 @@ export type AppDispatch = typeof store.dispatch
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
-export { store, closeDrawer, openDrawer }
+export { store, closeDrawer, openDrawer, setIsAuthenticated }
