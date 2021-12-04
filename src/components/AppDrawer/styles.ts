@@ -27,10 +27,10 @@ export const Box = styled(MuiBox)(({ theme }) => ({
 }))
 
 export const Backdrop = styled(MuiBackdrop)(({ theme }) => ({
-   color: "#fff",
+   color: theme.palette.common.white,
    zIndex: theme.zIndex.drawer - 1,
 }))
 
-export const Paper = styled(MuiPaper)(({ theme }) => ({
+export const Paper = styled(MuiPaper)(() => ({
    height: "100%",
 }))

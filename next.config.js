@@ -1,11 +1,9 @@
-module.exports = {
-   async redirects() {
-      return [
-         {
-            source: "/",
-            destination: "/app",
-            permanent: true,
-         },
-      ]
-   },
+module.exports = (phase, { defaultConfig }) => {
+   /**
+    * @type {import('next').NextConfig}
+    */
+
+   return {
+      /* config options for all phases except development here */
+   }
 }

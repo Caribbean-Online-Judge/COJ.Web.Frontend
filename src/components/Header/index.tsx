@@ -85,7 +85,7 @@ export default function Header(): JSX.Element {
                   <AccountCircleIcon />
                </IconButton>
             ) : (
-               <Link href="/login">
+               <Link href="/account/login">
                   <Tooltip title={"Login"} arrow>
                      <IconButton
                         size="large"

@@ -1,12 +1,12 @@
 import React from "react"
-import Content from "../components/Content"
+import Lottie from "react-lottie-player"
 
-export default function Home(): JSX.Element {
+import anim from "../assets/lottie/website-build-anim.json"
+
+export default function App(): JSX.Element {
    return (
-      <>
-         <div style={{ minHeight: "100vh" }}>
-            <Content />
-         </div>
-      </>
+      <div>
+         <Lottie loop animationData={anim} play style={{ height: 500 }} />
+      </div>
    )
 }

@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
          </Head>
          <Provider store={store}>
             <ThemeProvider theme={theme}>
-               {router.pathname == "/login" ? (
+               {router.pathname.startsWith("/account") ? (
                   <Component {...pageProps} />
                ) : (
                   <>

@@ -1,6 +1,6 @@
 import React from "react"
 import Lottie from "react-lottie-player"
-import coderBoyAnim from "../../assets/lottie/coder-boy-anim.json"
+import coderBoyAnim from "../../../assets/lottie/coder-boy-anim.json"
 import {
    Button,
    Box,
@@ -11,7 +11,7 @@ import {
 } from "@mui/material"
 import { useRouter } from "next/router"
 import { useDispatch } from "react-redux"
-import { setIsAuthenticated } from "../../api/redux"
+import { setIsAuthenticated } from "../../../api/redux"
 
 export default function Login(): JSX.Element {
    const router = useRouter()
@@ -19,7 +19,7 @@ export default function Login(): JSX.Element {
 
    const handleLogin = () => {
       dispatch(setIsAuthenticated())
-      router.replace("/app")
+      router.replace("/")
    }
 
    return (

@@ -15,7 +15,7 @@ import {
 import { List, Box, Backdrop, Paper } from "./styles"
 import { useAppSelector, toggleIsDrawerOpen } from "../../api/redux"
 import { useDispatch } from "react-redux"
-
+import Link from "next/link"
 export default function AppDrawer(): JSX.Element {
    const [open, setOpen] = React.useState(false)
    const dispatch = useDispatch()
@@ -39,18 +39,22 @@ export default function AppDrawer(): JSX.Element {
             >
                <Paper sx={{ m: 1 }} elevation={4}>
                   <List>
-                     <ListItemButton>
-                        <ListItemIcon>
-                           <ViewListIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Problems"} />
-                     </ListItemButton>
-                     <ListItemButton>
-                        <ListItemIcon>
-                           <GavelIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={"Judgments"} />
-                     </ListItemButton>
+                     <Link href="/24h">
+                        <ListItemButton>
+                           <ListItemIcon>
+                              <ViewListIcon />
+                           </ListItemIcon>
+                           <ListItemText primary={"Problems"} />
+                        </ListItemButton>
+                     </Link>
+                     <Link href="/24h/judgments">
+                        <ListItemButton>
+                           <ListItemIcon>
+                              <GavelIcon />
+                           </ListItemIcon>
+                           <ListItemText primary={"Judgments"} />
+                        </ListItemButton>
+                     </Link>
                      <ListItemButton onClick={handleClick}>
                         <ListItemIcon>
                            <SortIcon />
