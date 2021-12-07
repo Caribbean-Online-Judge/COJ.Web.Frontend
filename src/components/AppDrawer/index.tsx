@@ -40,7 +40,9 @@ export default function AppDrawer(): JSX.Element {
                <Paper sx={{ m: 1 }} elevation={4}>
                   <List>
                      <Link href="/24h">
-                        <ListItemButton>
+                        <ListItemButton
+                           onClick={() => dispatch(toggleIsDrawerOpen())}
+                        >
                            <ListItemIcon>
                               <ViewListIcon />
                            </ListItemIcon>
@@ -48,7 +50,9 @@ export default function AppDrawer(): JSX.Element {
                         </ListItemButton>
                      </Link>
                      <Link href="/24h/judgments">
-                        <ListItemButton>
+                        <ListItemButton
+                           onClick={() => dispatch(toggleIsDrawerOpen())}
+                        >
                            <ListItemIcon>
                               <GavelIcon />
                            </ListItemIcon>

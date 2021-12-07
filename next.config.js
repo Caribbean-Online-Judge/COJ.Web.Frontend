@@ -4,6 +4,6 @@ module.exports = (phase, { defaultConfig }) => {
     */
 
    return {
-      /* config options for all phases except development here */
+      pageExtensions: ["page.tsx"],
    }
 }
