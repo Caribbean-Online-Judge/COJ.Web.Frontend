@@ -55,5 +55,11 @@ export const TextField = styled(MuiTextField)(() => ({
 }))
 
 export const Typography = styled(MuiTypography)(() => ({
-   margin: "0 0 2em 0",
+   margin: "1.5em 0 2em 0",
+}))
+
+export const TypographyLink = styled(Typography)(() => ({
+   "&:hover": {
+      cursor: "pointer",
+   },
 }))

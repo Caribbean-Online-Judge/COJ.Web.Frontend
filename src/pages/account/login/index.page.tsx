@@ -12,7 +12,9 @@ import {
    SignInCard,
    TextField,
    Typography,
+   TypographyLink,
 } from "./styles"
+import Link from "next/link"
 
 export default function Login(): JSX.Element {
    const router = useRouter()
@@ -53,6 +55,17 @@ export default function Login(): JSX.Element {
                <Button variant={"contained"} fullWidth onClick={handleLogin}>
                   LogIn
                </Button>
+               <Link href="/account/sign-up">
+                  <TypographyLink
+                     align={"center"}
+                     color={"primary"}
+                     variant="body1"
+                     sx={{ flexGrow: 0.8 }}
+                     fontWeight={400}
+                  >
+                     Sign Up in COJ
+                  </TypographyLink>
+               </Link>
             </BoxContainer>
             <LottieBoxContainer>
                <Lottie
