@@ -30,6 +30,8 @@ import theme from "../config/theme"
 import Head from "next/head"
 import { useRouter } from "next/router"
 
+//import "../styles/katex.css"
+
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
    const router = useRouter()
    return (

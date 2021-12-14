@@ -1,6 +1,7 @@
 import React from "react"
 import "@uiw/react-md-editor/markdown-editor.css"
 import "@uiw/react-markdown-preview/markdown.css"
+import "katex/dist/katex.css"
 import dynamic from "next/dynamic"
 import { useState } from "react"
 import katex from "katex"
