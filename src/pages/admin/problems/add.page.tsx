@@ -16,8 +16,8 @@ export default function AddProblem(): JSX.Element {
 c = \\pm\\sqrt{a^2 + b^2}
 \`\`\`
 \`\`\`KaTeX
-\\f\\relax{x} = \\int_{-\\infty}^\\infty
-    \\f\\hat\\xi\\,e^{2 \\pi i \\xi x}
+\ \\relax{x} = \\int_{-\\infty}^\\infty
+    \ \\hat\\xi\\,e^{2 \\pi i \\xi x}
     \\,d\\xi
 \`\`\`
 `
