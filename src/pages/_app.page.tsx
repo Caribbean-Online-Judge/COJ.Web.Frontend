@@ -29,27 +29,35 @@ import { ThemeProvider } from "@mui/material"
 import theme from "../config/theme"
 import Head from "next/head"
 import { useRouter } from "next/router"
+import { ServerManagerProvider } from "../api/server"
+import { CssBaseline } from "@mui/material"
 
 //import "../styles/katex.css"
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
    const router = useRouter()
+
+   const renderLayout = (): React.ReactNode => {
+      return router.pathname.startsWith("/auth") ? (
+         <Component {...pageProps} />
+      ) : (
+         <>
+            <Header />
+            <AppDrawer />
+            <Component {...pageProps} />
+         </>
+      )
+   }
+
    return (
       <>
          <Head>
             <title>Caribbean Online Judge</title>
          </Head>
+         <CssBaseline />
          <Provider store={store}>
             <ThemeProvider theme={theme}>
-               {router.pathname.startsWith("/account") ? (
-                  <Component {...pageProps} />
-               ) : (
-                  <>
-                     <Header />
-                     <AppDrawer />
-                     <Component {...pageProps} />
-                  </>
-               )}
+               <ServerManagerProvider>{renderLayout()}</ServerManagerProvider>
             </ThemeProvider>
          </Provider>
       </>
