@@ -4,9 +4,13 @@ import { Problem } from "../../types/Problem"
 import { Paper } from "./styles"
 import GridLoadingOverlay from "../../components/Grid/LoadingOverlay"
 import GridNoRowsOverlay from "../../components/Grid/NoRowsOverlay"
+import { useServerManager } from "../../api/server"
 
-export default function H24(): JSX.Element {
+export default function Problems(): JSX.Element {
    const [isLoading, setIsLoading] = useState<boolean>(false)
+
+   const serverManager = useServerManager()
+
    const columns: GridColDef[] = [
       { field: "id", headerName: "ID", flex: 0.4 },
       {
@@ -55,6 +59,12 @@ export default function H24(): JSX.Element {
          point: 120,
       },
    ]
+
+   React.useEffect(() => {
+      serverManager.getProblems().then((r) => console.log(r))
+      console.log(process.env)
+   })
+
    return (
       <Paper>
          <DataGrid

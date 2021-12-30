@@ -6,5 +6,8 @@ module.exports = removeImports({
     * @type {import('next').NextConfig}
     */
 
+   env: {
+      NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+   },
    pageExtensions: ["page.tsx"],
 })

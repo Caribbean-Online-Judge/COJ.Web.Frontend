@@ -1,19 +1,17 @@
 import axios, { AxiosInstance, AxiosResponse } from "axios"
 
-const API_URL = process.env.REACT_APP_API_URL
-
 class ServerManager {
    private apiAxios: AxiosInstance
 
    constructor() {
       this.apiAxios = axios.create({
-         baseURL: API_URL,
+         baseURL: process.env.NEXT_PUBLIC_API_URL,
       })
    }
 
    refreshInstance(): void {
       this.apiAxios = axios.create({
-         baseURL: API_URL,
+         baseURL: process.env.NEXT_PUBLIC_API_URL,
          headers: {},
       })
    }
@@ -26,6 +24,10 @@ class ServerManager {
       return this.apiAxios.post("/problems/add", data, {
          headers: { "Content-Type": "multipart/form-data" },
       })
+   }
+
+   getProblems(): Promise<AxiosResponse> {
+      return this.apiAxios.get("/problem")
    }
 }
 
