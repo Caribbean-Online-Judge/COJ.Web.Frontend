@@ -69,7 +69,7 @@ export default function Header(): JSX.Element {
                variant="h4"
                sx={{ flexGrow: 1 }}
                //color={'primary'}
-               fontWeight={700}
+               fontWeight={500}
             >
                Caribbean Online Judge
             </Typography>

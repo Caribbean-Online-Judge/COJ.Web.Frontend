@@ -1,6 +1,5 @@
 import {
    styled,
-   TextField as MuiTextField,
    Box as MuiBox,
    Paper as MuiPaper,
    Stack as MuiStack,
@@ -8,17 +7,19 @@ import {
    Card as MuiCard,
 } from "@mui/material"
 
-export const TitleTextField = styled(MuiTextField)(() => ({
+import { TextField as CustomTextField } from "../../../components/inputs"
+
+export const TitleTextField = styled(CustomTextField)(() => ({
    margin: "1em 0 0.5em 0",
    width: "60%",
 }))
 
-export const DescriptionTextField = styled(MuiTextField)(() => ({
+export const DescriptionTextField = styled(CustomTextField)(() => ({
    margin: "0.5em 0 1em 0",
    width: "100%",
 }))
 
-export const TextField = styled(MuiTextField)(() => ({
+export const TextField = styled(CustomTextField)(() => ({
    margin: "0.5em 0 0.5em 0",
 }))
 

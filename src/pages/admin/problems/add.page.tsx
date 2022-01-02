@@ -2,7 +2,7 @@ import React from "react"
 import "@uiw/react-md-editor/markdown-editor.css"
 import "@uiw/react-markdown-preview/markdown.css"
 import "katex/dist/katex.css"
-import dynamic from "next/dynamic"
+
 import katex from "katex"
 import {
    Box,
@@ -15,8 +15,7 @@ import {
 import { useServerManager } from "../../../api/server"
 import { Button, CardContent, CardHeader, Divider, Typography } from "@mui/material"
 import { useForm, Controller } from "react-hook-form"
-
-const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false })
+import { MDEditor } from "../../../components/inputs"
 
 export default function AddProblem(): JSX.Element {
    const serverManager = useServerManager()
@@ -44,103 +43,36 @@ export default function AddProblem(): JSX.Element {
 
    return (
       <Box>
-         <Controller
+         <TitleTextField
             control={control}
-            name="title"
+            fieldName="title"
             rules={{ required: "Title is requierd" }}
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-               <TitleTextField
-                  label={"Title"}
-                  required
-                  value={value}
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-               />
-            )}
-         />
-         <Controller
-            control={control}
-            name="description"
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-               <DescriptionTextField
-                  label={"Description"}
-                  multiline
-                  rows={4}
-                  value={value}
-                  onChange={onChange}
-                  error={!!error}
-                  helperText={error ? error.message : null}
-               />
-            )}
+            textFieldProps={{
+               label: "Title",
+               multiline: true,
+               rows: 4,
+               required: true,
+            }}
          />
 
-         <Controller
+         <DescriptionTextField
             control={control}
-            name="text"
+            fieldName="description"
+            rules={{ required: "Title is requierd" }}
+            textFieldProps={{
+               multiline: true,
+               rows: 4,
+               label: "Description",
+            }}
+         />
+
+         <MDEditor
+            control={control}
+            fieldName="text"
             rules={{ required: "Markdown text is requierd" }}
-            render={({ field: { onChange, value }, fieldState: { error } }) => (
-               <>
-                  <MDEditor
-                     value={value}
-                     onChange={onChange}
-                     textareaProps={{
-                        placeholder: "Please enter Markdown text",
-                     }}
-                     height={500}
-                     previewOptions={{
-                        components: {
-                           // eslint-disable-next-line react/prop-types
-                           code: ({ inline, children = [], className }) => {
-                              const txt = children[0] || ""
-                              if (inline) {
-                                 if (
-                                    typeof txt === "string" &&
-                                    /^\$\$(.*)\$\$/.test(txt)
-                                 ) {
-                                    const html = katex.renderToString(
-                                       txt.replace(/^\$\$(.*)\$\$/, "$1"),
-                                       {
-                                          throwOnError: false,
-                                       }
-                                    )
-                                    return (
-                                       <code
-                                          dangerouslySetInnerHTML={{ __html: html }}
-                                       />
-                                    )
-                                 }
-                                 return <code>{txt}</code>
-                              }
-                              if (
-                                 typeof txt === "string" &&
-                                 typeof className === "string" &&
-                                 // eslint-disable-next-line react/prop-types
-                                 /^language-katex/.test(
-                                    className.toLocaleLowerCase()
-                                 )
-                              ) {
-                                 const html = katex.renderToString(txt, {
-                                    throwOnError: false,
-                                 })
-                                 return (
-                                    <code
-                                       dangerouslySetInnerHTML={{ __html: html }}
-                                    />
-                                 )
-                              }
-                              return <code className={String(className)}>{txt}</code>
-                           },
-                        },
-                     }}
-                  />
-                  {error && (
-                     <Typography align="left" color={"error"}>
-                        Markdown text is requierd
-                     </Typography>
-                  )}
-               </>
-            )}
+            textAreaProps={{
+               placeholder: "Please enter Markdown text",
+            }}
          />
 
          <HorizaontalBox>
@@ -153,43 +85,25 @@ export default function AddProblem(): JSX.Element {
                <CardHeader title={"Limits"} />
                <Divider />
                <CardContent>
-                  <Controller
+                  <TextField
                      control={control}
-                     name="maxMemory"
+                     fieldName="maxMemory"
                      rules={{ required: "Max Memory is requierd" }}
-                     render={({
-                        field: { onChange, value },
-                        fieldState: { error },
-                     }) => (
-                        <TextField
-                           fullWidth
-                           value={value}
-                           label={"Max Memory"}
-                           type="number"
-                           onChange={onChange}
-                           error={!!error}
-                           helperText={error ? error.message : null}
-                        />
-                     )}
+                     textFieldProps={{
+                        fullWidth: true,
+                        label: "Max Memory",
+                        type: "number",
+                     }}
                   />
-                  <Controller
+                  <TextField
                      control={control}
-                     name="maxTime"
+                     fieldName="maxTime"
                      rules={{ required: "Max Time is requierd" }}
-                     render={({
-                        field: { onChange, value },
-                        fieldState: { error },
-                     }) => (
-                        <TextField
-                           fullWidth
-                           value={value}
-                           label={"Max Time"}
-                           type="number"
-                           onChange={onChange}
-                           error={!!error}
-                           helperText={error ? error.message : null}
-                        />
-                     )}
+                     textFieldProps={{
+                        fullWidth: true,
+                        label: "Max Time",
+                        type: "number",
+                     }}
                   />
                </CardContent>
             </Card>
