@@ -55,7 +55,7 @@ export default function Login(): JSX.Element {
                <Button variant={"contained"} fullWidth onClick={handleLogin}>
                   LogIn
                </Button>
-               <Link href="/account/sign-up">
+               <Link href="/auth/sign-up">
                   <TypographyLink
                      align={"center"}
                      color={"primary"}
@@ -63,7 +63,7 @@ export default function Login(): JSX.Element {
                      sx={{ flexGrow: 0.8 }}
                      fontWeight={400}
                   >
-                     Sign Up in COJ
+                     Sign In in COJ
                   </TypographyLink>
                </Link>
             </BoxContainer>

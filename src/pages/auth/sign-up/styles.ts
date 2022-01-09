@@ -42,6 +42,9 @@ export const RegisterCard = styled(Card)(({ theme }) => ({
 
 export const Typography = styled(MuiTypography)(() => ({
    margin: "1.5em 0 1em 0",
+   // "&:hover": {
+   //    cursor: "pointer",
+   // },
 }))
 
 export const TextField = styled(MuiTextField)(() => ({

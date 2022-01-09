@@ -39,7 +39,7 @@ export default function AppDrawer(): JSX.Element {
             >
                <Paper sx={{ m: 1 }} elevation={4}>
                   <List>
-                     <Link href="/24h">
+                     <Link href="/problems">
                         <ListItemButton
                            onClick={() => dispatch(toggleIsDrawerOpen())}
                         >

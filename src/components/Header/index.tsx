@@ -69,7 +69,7 @@ export default function Header(): JSX.Element {
                variant="h4"
                sx={{ flexGrow: 1 }}
                //color={'primary'}
-               fontWeight={700}
+               fontWeight={500}
             >
                Caribbean Online Judge
             </Typography>
@@ -85,7 +85,7 @@ export default function Header(): JSX.Element {
                   <AccountCircleIcon />
                </IconButton>
             ) : (
-               <Link href="/account/login">
+               <Link href="/auth/sign-in">
                   <Tooltip title={"Login"} arrow>
                      <IconButton
                         size="large"
