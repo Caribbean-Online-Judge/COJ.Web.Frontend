@@ -1,5 +1,5 @@
 import { styled, Box, Card, Typography as MuiTypography } from "@mui/material"
-import { TextField as CustomTextField } from "../../../components/inputs"
+import { TextField as CustomTextField } from "@/components/inputs"
 
 export const RootContainer = styled(Box)(({ theme }) => ({
    background:

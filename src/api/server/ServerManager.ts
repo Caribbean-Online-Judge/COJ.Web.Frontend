@@ -17,7 +17,7 @@ class ServerManager {
    private localApiAxios: AxiosInstance
 
    private readonly REMOTE_URL = process.env.NEXT_PUBLIC_API_URL
-   private readonly LOCAL_URL = "localhost:3000"
+   private readonly LOCAL_URL = process.env.NEXT_PUBLIC_API_URL //"localhost:3000"
 
    constructor() {
       this.apiAxios = axios.create({
@@ -31,7 +31,15 @@ class ServerManager {
       this.localApiAxios = axios.create({
          baseURL: `${this.LOCAL_URL}/api/v1`,
       })
-      this.localApiAxios.interceptors.request.use(this.headerInterceptors)
+      this.apiAxios.interceptors.request.use(this.headerInterceptors)
+      this.apiAxios.interceptors.response.use(
+         (response: AxiosResponse) => response,
+         this.refreshTokenInterceptors
+      )
+      this.localApiAxios = axios.create({
+         baseURL: `${this.LOCAL_URL}/api/v1`,
+      })
+      //this.localApiAxios.interceptors.request.use(this.headerInterceptors)
       this.localApiAxios.interceptors.response.use(
          (response: AxiosResponse) => response,
          this.refreshTokenInterceptors
@@ -51,6 +59,7 @@ class ServerManager {
 
    private refreshTokenInterceptors(error: AxiosError) {
       if (
+         error.request &&
          error.request.status === 401 &&
          error.request.responseURL.includes("/api/v1/account")
       )
@@ -61,7 +70,11 @@ class ServerManager {
             .then(() => {
                return error
             })
-            .catch((e) => console.log(e))
+            .catch(() => {
+               error.code = "403"
+               error.message = "Refresh token is invalid"
+               return error
+            })
 
       throw error
    }
@@ -105,12 +118,20 @@ class ServerManager {
       })
    }
 
-   confirmEmail(): Promise<AxiosResponse> {
-      return this.localApiAxios.get("/account/confirm")
+   confirmEmail(email: string, token: string): Promise<AxiosResponse> {
+      return this.localApiAxios.get(`/account/confirm?email=${email}&token=${token}`)
    }
 
    getAccountInfo(): Promise<AxiosResponse<UserInfo>> {
       return this.apiAxios.get("/account")
+   }
+
+   recoverPassword(data: {
+      email: string
+      password: string
+      token: string
+   }): Promise<AxiosResponse> {
+      return this.apiAxios.post("/auth/reset-password", data)
    }
 
    createProblem(data: FormData): Promise<AxiosResponse> {
