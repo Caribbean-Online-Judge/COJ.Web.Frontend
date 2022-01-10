@@ -3,10 +3,11 @@ import {
    Box,
    Card,
    Typography as MuiTypography,
-   TextField as MuiTextField,
    FormControlLabel as MuiFormControlLabel,
    Button as MuiButton,
+   TextField as MuiTextField,
 } from "@mui/material"
+import { TextField as CustomTextFiled } from "@/components/inputs"
 
 export const RootContainer = styled(Box)(({ theme }) => ({
    background:
@@ -45,6 +46,11 @@ export const Typography = styled(MuiTypography)(() => ({
    // "&:hover": {
    //    cursor: "pointer",
    // },
+}))
+
+export const FormTextField = styled(CustomTextFiled)(() => ({
+   margin: "0.5em 3em 0.5em 3em",
+   width: "80%",
 }))
 
 export const TextField = styled(MuiTextField)(() => ({

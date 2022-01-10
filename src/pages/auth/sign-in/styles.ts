@@ -1,10 +1,5 @@
-import {
-   styled,
-   Box,
-   Card,
-   TextField as MuiTextField,
-   Typography as MuiTypography,
-} from "@mui/material"
+import { styled, Box, Card, Typography as MuiTypography } from "@mui/material"
+import { TextField as CustomTextField } from "../../../components/inputs"
 
 export const RootContainer = styled(Box)(({ theme }) => ({
    background:
@@ -21,7 +16,7 @@ export const RootContainer = styled(Box)(({ theme }) => ({
 
 export const SignInCard = styled(Card)(({ theme }) => ({
    width: "60%",
-   height: "60%",
+   minHeight: "60%",
    display: "flex",
    flexDirection: "row",
    justifyContent: "space-between",
@@ -50,7 +45,7 @@ export const LottieBoxContainer = styled(BoxContainer)(({ theme }) => ({
    },
 }))
 
-export const TextField = styled(MuiTextField)(() => ({
+export const TextField = styled(CustomTextField)(() => ({
    margin: "0 0 2em 0",
 }))
 

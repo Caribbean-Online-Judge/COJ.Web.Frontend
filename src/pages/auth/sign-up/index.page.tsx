@@ -1,27 +1,19 @@
-import { RootContainer, RegisterCard, Typography, TextField, Button } from "./styles"
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material"
+import {
+   RootContainer,
+   RegisterCard,
+   Typography,
+   FormTextField,
+   TextField,
+   Button,
+} from "./styles"
+import { FormControl, InputLabel, MenuItem, CircularProgress } from "@mui/material"
 import { LocalizationProvider, DatePicker } from "@mui/lab"
 import AdapterDateFns from "@mui/lab/AdapterDateFns"
-import { useState, useEffect } from "react"
-import { Country, Institution, Language, Locale } from "../../../types"
-import { useForm, Controller } from "react-hook-form"
-
-interface signInData {
-   username: string
-   nick: string
-   password: string
-   confirmPassword: string
-   languageId: number
-   countryId: number
-   institutionId: number
-   localeId: number
-   firstName: string
-   lastName: string
-   email: string
-   confirmEmail: string
-   birthday: Date
-   sex: number
-}
+import { useState } from "react"
+import { Country, Institution, Language, Locale, RequestStatus } from "@/types"
+import { useForm } from "react-hook-form"
+import { Select } from "@/components/inputs"
+import { useServerManager } from "@/api/server"
 
 export default function Register(): JSX.Element {
    const [date, setDate] = useState(null)
@@ -43,71 +35,39 @@ export default function Register(): JSX.Element {
       { name: "English", id: 2 },
    ])
 
-   const [signInData, setSignInData] = useState<signInData>({
-      username: "",
-      nick: "",
-      password: "",
-      confirmPassword: "",
-      languageId: 0,
-      countryId: 0,
-      institutionId: 0,
-      localeId: 0,
-      firstName: "",
-      lastName: "",
-      email: "",
-      confirmEmail: "",
-      birthday: new Date(),
-      sex: 0,
+   const [requestStaus, setRequestStaus] = useState<RequestStatus>("unrequested")
+
+   const serverManager = useServerManager()
+
+   const { handleSubmit, control, formState, getValues } = useForm({
+      defaultValues: {
+         username: "",
+         password: "",
+         confirmPassword: "",
+         firstName: "",
+         lastName: "",
+         email: "",
+         confirmEmail: "",
+         birthday: new Date(),
+         sex: 0,
+         languageId: 0,
+         countryId: 0,
+         institutionId: 0,
+         localeId: 0,
+      },
+      mode: "onChange",
    })
 
-   const { handleSubmit, reset, control, setValue, register, formState, getValues } =
-      useForm({
-         defaultValues: {
-            username: "",
-            nick: "",
-            password: "",
-            confirmPassword: "",
-            languageId: 0,
-            countryId: 0,
-            institutionId: 0,
-            localeId: 0,
-            firstName: "",
-            lastName: "",
-            email: "",
-            confirmEmail: "",
-            birthday: new Date(),
-            sex: 0,
-         },
-      })
-   const onSubmit = (data: any) => console.log(data)
-
-   useEffect(() => {
-      console.log(formState)
-   })
-
-   const handleChangeData =
-      (prop: keyof signInData) => (event: React.ChangeEvent<HTMLInputElement>) => {
-         setSignInData({ ...signInData, [prop]: event.target.value })
-      }
-
-   const emailError = signInData.email != signInData.confirmEmail
-   const passwordError = signInData.password != signInData.confirmPassword
-
-   const disableButton =
-      signInData.username === "" ||
-      signInData.password === "" ||
-      signInData.confirmPassword === "" ||
-      signInData.nick === "" ||
-      signInData.firstName === "" ||
-      signInData.lastName === "" ||
-      signInData.sex === 0 ||
-      signInData.countryId === 0 ||
-      signInData.institutionId === 0 ||
-      signInData.email === "" ||
-      signInData.confirmEmail === "" ||
-      signInData.localeId === 0 ||
-      emailError ||
-      passwordError
+   const handleSignUp = () => {
+      setRequestStaus("progress")
+      serverManager
+         .signUp(getValues())
+         .then((r) => {
+            setRequestStaus("successfull")
+            console.log(r)
+         })
+         .catch(() => setRequestStaus("error"))
+   }
 
    return (
       <RootContainer>
@@ -121,69 +81,76 @@ export default function Register(): JSX.Element {
             >
                Registrar Cuenta de Usuario
             </Typography>
-            <Controller
+            <FormTextField
                control={control}
-               name="username"
-               render={() => (
-                  <TextField
-                     //onChange={handleChangeData("username")}
-                     onChange={(e) => setValue("username", e.target.value)}
-                     required
-                     type={"usermane"}
-                     label={"Username"}
-                     value={getValues("username")}
-                  />
-               )}
-            />
-            <Controller
-               control={control}
-               name="nick"
-               render={() => (
-                  <TextField
-                     required
-                     label={"Nickname"}
-                     value={getValues("nick")}
-                     //onChange={handleChangeData("nick")}
-                     onChange={(e) => setValue("nick", e.target.value)}
-                  />
-               )}
-            />
-            <Controller
-               control={control}
-               name="firstName"
-               render={() => (
-                  <TextField
-                     required
-                     label={"First Name"}
-                     value={getValues("firstName")}
-                     onChange={(e) => setValue("firstName", e.target.value)}
-                  />
-               )}
-            />
-            {/* Hasta aqui se implemeto la validacion */}
-            <TextField
+               fieldName="username"
+               rules={{
+                  required: "This field is requierd",
+                  pattern: {
+                     value: /^[a-z0-9_]+$/,
+                     message:
+                        "The username only can have low letters, numbers and undercoach",
+                  },
+               }}
+               id="username"
+               label="Username"
+               variant="outlined"
+               type={"username"}
+               fullWidth
                required
-               label={"Last Name"}
-               value={signInData.lastName}
-               onChange={handleChangeData("lastName")}
             />
-            <FormControl required sx={{ m: 1, width: "80%" }}>
-               <InputLabel>Gender</InputLabel>
-               <Select
-                  value={signInData.sex}
-                  label="Gender"
-                  onChange={(event) => {
-                     setSignInData({
-                        ...signInData,
-                        sex: event.target.value as number,
-                     })
-                  }}
-               >
-                  <MenuItem value={"m"}>Male</MenuItem>
-                  <MenuItem value={"f"}>Female</MenuItem>
-                  <MenuItem value={"u"}>I prefer not to say</MenuItem>
-               </Select>
-            </FormControl>
+            <FormTextField
+               control={control}
+               fieldName="firstName"
+               rules={{ required: "This field is requierd" }}
+               id="firstName"
+               label="First Name"
+               variant="outlined"
+               fullWidth
+               required
+            />
+            <FormTextField
+               control={control}
+               fieldName="lastName"
+               rules={{ required: "This field is requierd" }}
+               id="lastName"
+               label="Last Name"
+               variant="outlined"
+               fullWidth
+               required
+            />
+            <FormTextField
+               control={control}
+               fieldName="email"
+               rules={{
+                  required: "This field is requierd",
+                  pattern: {
+                     value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+                     message: "",
+                  },
+               }}
+               id="email"
+               label="Email"
+               variant="outlined"
+               fullWidth
+               required
+            />
+            <FormTextField
+               control={control}
+               fieldName="confirmEmail"
+               rules={{
+                  required: "This field is requierd",
+                  pattern: {
+                     value: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/,
+                     message: "",
+                  },
+               }}
+               id="confirmEmail"
+               label="Confirm Email"
+               variant="outlined"
+               fullWidth
+               required
+            />
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                <DatePicker
                   label="Date of birth"
@@ -195,16 +162,25 @@ export default function Register(): JSX.Element {
                />
             </LocalizationProvider>
             <FormControl required sx={{ m: 1, width: "80%" }}>
+               <InputLabel>Gender</InputLabel>
+               <Select
+                  control={control}
+                  fieldName={"sex"}
+                  rules={{ requierd: "This field is requierd" }}
+                  label="Gender"
+               >
+                  <MenuItem value={1}>Male</MenuItem>
+                  <MenuItem value={2}>Female</MenuItem>
+                  <MenuItem value={3}>I prefer not to say</MenuItem>
+               </Select>
+            </FormControl>
+            <FormControl required sx={{ m: 1, width: "80%" }}>
                <InputLabel>Country</InputLabel>
                <Select
-                  value={signInData.countryId}
+                  control={control}
+                  fieldName={"countryId"}
+                  rules={{ requierd: "This field is requierd" }}
                   label="Country"
-                  onChange={(event) => {
-                     setSignInData({
-                        ...signInData,
-                        countryId: event.target.value as number,
-                     })
-                  }}
                >
                   {countries.map((country, index) => (
                      <MenuItem key={index} value={country.id}>
@@ -214,51 +190,12 @@ export default function Register(): JSX.Element {
                </Select>
             </FormControl>
             <FormControl required sx={{ m: 1, width: "80%" }}>
-               <InputLabel>Language</InputLabel>
-               <Select
-                  value={signInData.countryId}
-                  label="Language"
-                  onChange={(event) => {
-                     setSignInData({
-                        ...signInData,
-                        localeId: event.target.value as number,
-                     })
-                  }}
-               >
-                  {locales.map((locale, index) => (
-                     <MenuItem key={index} value={locale.id}>
-                        {locale.name}
-                     </MenuItem>
-                  ))}
-               </Select>
-            </FormControl>
-            <TextField
-               required
-               value={signInData.email}
-               onChange={handleChangeData("email")}
-               type={"email"}
-               label={"Email"}
-               error={emailError}
-            />
-            <TextField
-               required
-               value={signInData.confirmEmail}
-               onChange={handleChangeData("confirmEmail")}
-               type={"email"}
-               label={"Confirm Email"}
-               error={emailError}
-            />
-            <FormControl required sx={{ m: 1, width: "80%" }}>
                <InputLabel>Default Language</InputLabel>
                <Select
-                  value={signInData.localeId}
+                  control={control}
+                  fieldName={"localeId"}
+                  rules={{ requierd: "This field is requierd" }}
                   label="Default Language"
-                  onChange={(event) => {
-                     setSignInData({
-                        ...signInData,
-                        localeId: event.target.value as number,
-                     })
-                  }}
                >
                   {locales.map((locale, index) => (
                      <MenuItem key={index} value={locale.id}>
@@ -270,14 +207,10 @@ export default function Register(): JSX.Element {
             <FormControl required sx={{ m: 1, width: "80%" }}>
                <InputLabel>Default programming language</InputLabel>
                <Select
-                  value={signInData.languageId}
+                  control={control}
+                  fieldName={"languageId"}
+                  rules={{ requierd: "This field is requierd" }}
                   label="Default programming language"
-                  onChange={(event) => {
-                     setSignInData({
-                        ...signInData,
-                        languageId: event.target.value as number,
-                     })
-                  }}
                >
                   {languages.map((language, index) => (
                      <MenuItem key={index} value={language.id}>
@@ -289,14 +222,10 @@ export default function Register(): JSX.Element {
             <FormControl required sx={{ m: 1, width: "80%" }}>
                <InputLabel>Institution</InputLabel>
                <Select
-                  value={signInData.institutionId}
+                  control={control}
+                  fieldName={"institutionId"}
+                  rules={{ requierd: "This field is requierd" }}
                   label="Institution"
-                  onChange={(event) => {
-                     setSignInData({
-                        ...signInData,
-                        institutionId: event.target.value as number,
-                     })
-                  }}
                >
                   {institutios.map((institutio, index) => (
                      <MenuItem key={index} value={institutio.id}>
@@ -305,24 +234,57 @@ export default function Register(): JSX.Element {
                   ))}
                </Select>
             </FormControl>
-            <TextField
+            <FormTextField
+               control={control}
+               fieldName="password"
+               rules={{
+                  required: "This field is requierd",
+                  pattern: {
+                     value: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
+                     message:
+                        "The password must have at least 8 characters, two capital letters and two special characters",
+                  },
+               }}
+               id="password"
+               label="Password"
+               variant="outlined"
+               type="password"
+               fullWidth
                required
-               value={signInData.password}
-               onChange={handleChangeData("password")}
-               type={"password"}
-               label={"Password"}
-               error={passwordError}
             />
-            <TextField
+            <FormTextField
+               control={control}
+               fieldName="confirmPassword"
+               rules={{
+                  required: "This field is requierd",
+                  pattern: {
+                     value: /^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8,}$/,
+                     message:
+                        "The password must have at least 8 characters, two capital letters and two special characters",
+                  },
+                  validate: () =>
+                     getValues("password") === getValues("confirmPassword")
+                        ? true
+                        : "Passwords do not match",
+               }}
+               id="confirmPassword"
+               label="Confirm Password"
+               variant="outlined"
+               type="password"
+               fullWidth
                required
-               value={signInData.confirmPassword}
-               onChange={handleChangeData("confirmPassword")}
-               type={"password"}
-               label={"Confirm Password"}
-               error={passwordError}
             />
-            <Button variant={"contained"} fullWidth disabled={disableButton}>
-               Sign Up in COJ
+            <Button
+               variant={"contained"}
+               fullWidth
+               disabled={!formState.isValid || requestStaus === "progress"}
+               onClick={handleSubmit(handleSignUp)}
+            >
+               {requestStaus === "progress" ? (
+                  <CircularProgress size={24} />
+               ) : (
+                  "Sign Up in COJ"
+               )}
             </Button>
          </RegisterCard>
       </RootContainer>

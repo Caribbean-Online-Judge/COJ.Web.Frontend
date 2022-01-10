@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import {
    Toolbar,
    IconButton,
@@ -6,6 +6,7 @@ import {
    Menu,
    MenuItem,
    Tooltip,
+   CircularProgress,
 } from "@mui/material"
 import {
    Menu as MenuIcon,
@@ -13,14 +14,24 @@ import {
    Login as LoginIcon,
    Close as CloseIcon,
 } from "@mui/icons-material"
-import { toggleIsDrawerOpen, useAppSelector } from "../../api/redux"
+import {
+   toggleIsDrawerOpen,
+   useAppSelector,
+   setUserInfo,
+   setIsAuthenticated,
+} from "@/api/redux"
 import { useDispatch } from "react-redux"
 import Link from "next/link"
 import { GradientAppBar } from "./styles"
+import { RequestStatus } from "@/types"
+import { useServerManager } from "@/api/server"
+
 export default function Header(): JSX.Element {
    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+   const [requestStatus, setRequestStatus] = useState<RequestStatus>("progress")
    const isMenuOpen = Boolean(anchorEl)
    const dispatch = useDispatch()
+   const serverManager = useServerManager()
    const isAuthenticated = useAppSelector((state) => state.user.isAuthenticated)
    const isDrawerOpen = useAppSelector((state) => state.ui.isDeawerOpen)
 
@@ -52,6 +63,20 @@ export default function Header(): JSX.Element {
       </Menu>
    )
 
+   useEffect(() => {
+      serverManager
+         .getAccountInfo()
+         .then((r) => {
+            console.log(r.data)
+            dispatch(setUserInfo(r.data))
+            dispatch(setIsAuthenticated(true))
+         })
+         .catch(() => {
+            dispatch(setIsAuthenticated(false))
+         })
+         .finally(() => setRequestStatus("successfull"))
+   }, [])
+
    return (
       <GradientAppBar position={"relative"}>
          <Toolbar>
@@ -73,7 +98,9 @@ export default function Header(): JSX.Element {
             >
                Caribbean Online Judge
             </Typography>
-            {isAuthenticated ? (
+            {requestStatus === "progress" ? (
+               <CircularProgress color={"inherit"} />
+            ) : isAuthenticated ? (
                <IconButton
                   size="large"
                   edge="end"

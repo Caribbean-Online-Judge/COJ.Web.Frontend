@@ -23,13 +23,13 @@ import React from "react"
 import type { AppProps } from "next/app"
 import Header from "../components/Header"
 import AppDrawer from "../components/AppDrawer"
-import { Provider } from "react-redux"
+import { Provider as ReduxProvider } from "react-redux"
 import { store } from "../api/redux"
 import { ThemeProvider } from "@mui/material"
 import theme from "../config/theme"
 import Head from "next/head"
 import { useRouter } from "next/router"
-import { ServerManagerProvider } from "../api/server"
+import { ServerManagerProvider } from "@/api/server"
 import { CssBaseline } from "@mui/material"
 
 //import "../styles/katex.css"
@@ -55,11 +55,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
             <title>Caribbean Online Judge</title>
          </Head>
          <CssBaseline />
-         <Provider store={store}>
+         <ReduxProvider store={store}>
             <ThemeProvider theme={theme}>
                <ServerManagerProvider>{renderLayout()}</ServerManagerProvider>
             </ThemeProvider>
-         </Provider>
+         </ReduxProvider>
       </>
    )
 }
